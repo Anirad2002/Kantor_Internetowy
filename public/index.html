@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kantor Walutowy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <ul>
+          <li><a href="login/index.html">Zaloguj</a></li>
+          <li><a href="register/index.html">Załóż konto</a></li>
+          <li><a href="/kontakt/contact.html">Kontakt</a></li>
+        </ul>
+      </nav>
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Szukaj waluty...">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="currency-table-container">
+        <table id="currency-table" class="currency-table">
+          <thead>
+            <tr>
+              <th>Waluta</th>
+              <th>Kurs</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="currency-table-container">
+        <table id="currency-table-new" class="currency-table">
+          <thead>
+            <tr>
+              <th>Waluta</th>
+              <th>Kurs</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="converter-container">
+        <form id="converter-form">
+          <label for="amount">Kwota:</label>
+          <input type="number" id="amount" name="amount" min="0" required>
+          <label for="source-currency">Z:</label>
+          <select id="source-currency" name="source-currency" required></select>
+          <label for="target-currency">Na:</label>
+          <select id="target-currency" name="target-currency" required></select>
+          <button type="submit">Przelicz</button>
+        </form>
+
+        <div id="conversion-result"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Kantor Walutowy. Wszelkie prawa zastrzeżone.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

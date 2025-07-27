@@ -1,0 +1,21 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+
+.sukces {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #c2c2c2;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.formularz-platnosci {
+    flex: 1;
+    padding: 20px;
+}
+.lewa-strona {
+    margin-right: 20px;
+}

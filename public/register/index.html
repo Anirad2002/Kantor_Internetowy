@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formularz rejestracji</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h2>Formularz rejestracji</h2>
+    <form id="registration-form">
+      <div class="form-group">
+        <label for="username">Nazwa użytkownika:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Hasło:</label>
+        <div class="password-field">
+          <input type="password" id="password" name="password" required>
+          <span class="toggle-password" onclick="togglePasswordVisibility('password')"><i class="fas fa-eye-slash"></i></span>
+        </div>
+        <span id="password-hint" class="password-hint" style="display: none;">Hasło musi zawierać co najmniej 8 znaków, przynajmniej jedną dużą literę, jedną małą literę, jedną cyfrę oraz jeden znak specjalny (!@#$%^&*).</span>
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">Potwierdź hasło:</label>
+        <div class="password-field">
+          <input type="password" id="confirm-password" name="confirm-password" required>
+          <span class="toggle-password" onclick="togglePasswordVisibility('confirm-password')"><i class="fas fa-eye-slash"></i></span>
+        </div>
+      </div>
+      <div id="existing-user-message" class="error-message" style="display: none;">Użytkownik o podanej nazwie użytkownika lub adresie e-mail już istnieje.</div>
+      <button type="submit" onclick="registerUser(event)">Zarejestruj</button>
+      <a href="/">Powrót do strony głównej</a>
+    </form>
+    <div id="registration-message"></div>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+  <script>
+    function registerUser(event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      if (!isValidPassword(password)) {
+        document.getElementById('password-hint').style.display = 'block';
+        return;
+      }
+      if (password !== confirmPassword) {
+        alert("Hasła nie pasują do siebie");
+        return;
+      }
+      const userData = {
+        username: username,
+        email: email,
+        password: password
+      };
+      fetch('/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.text();
+        } else if (response.status === 409) {
+          throw new Error('Użytkownik o podanej nazwie użytkownika lub adresie e-mail już istnieje');
+        } else {
+          throw new Error('Błąd rejestracji użytkownika');
+        }
+      })
+      .then(data => {
+        alert("Dziękujemy za rejestrację!");
+        window.location.href = "/";
+      })
+      .catch(error => {
+        console.error('Błąd:', error);
+        document.getElementById('existing-user-message').style.display = 'block';
+        document.getElementById('registration-message').innerText = error.message;
+      });
+    }
+    function isValidPassword(password) {
+      const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+      return regex.test(password);
+    }
+    function togglePasswordVisibility(inputId) {
+      const passwordInput = document.getElementById(inputId);
+      const toggleIcon = passwordInput.nextElementSibling;
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleIcon.querySelector('i').classList.remove('fa-eye-slash');
+        toggleIcon.querySelector('i').classList.add('fa-eye');
+      } else {
+        passwordInput.type = "password";
+        toggleIcon.querySelector('i').classList.remove('fa-eye');
+        toggleIcon.querySelector('i').classList.add('fa-eye-slash');
+      }
+    }
+  </script>
+</body>
+</html>

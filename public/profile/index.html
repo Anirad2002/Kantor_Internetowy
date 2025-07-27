@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil użytkownika</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2 class="header-center">Profil użytkownika</h2>
+    <p><strong>Email:</strong> <span id="email"></span></p>
+    <p><strong>Nazwa użytkownika:</strong> <span id="username"></span></p>
+    <p><strong>Token:</strong> <span id="token"></span></p>
+    <p>Saldo USD: <span id="balance-usd">0.00</span></p>
+    <p>Saldo EUR: <span id="balance-eur">0.00</span></p>
+    <form id="change-password-form" class="form-group">
+      <label for="old-password">Stare hasło:</label>
+      <input type="password" id="old-password" name="old-password" class="input-field">
+      <label for="new-password">Nowe hasło:</label>
+      <input type="password" id="new-password" name="new-password" class="input-field">
+      <button type="submit" class="button">Zmień hasło</button>
+    </form>    
+    <a href="../zalogowany/index.html" class="button">Powrót do strony głównej</a>
+  </div>
+
+  <script src="profile.js"></script>
+</body>
+</html>
