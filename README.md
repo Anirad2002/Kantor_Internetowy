@@ -1,4 +1,4 @@
-# 💱 Project Kantor Internetowy - Aplikacja Wymiany Walut
+# 💱 Kantor Internetowy - Aplikacja Wymiany Walut
 
 ## 📄 Opis projektu
 
