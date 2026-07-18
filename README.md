@@ -138,4 +138,6 @@ Aplikacja będzie dostępna pod adresem: ``` http://localhost:3000 ```
 
 **Daryna Pasiura**
 
+Stworzone z ❤️ przy użyciu Node.js + MongoDB
+
 ---
