@@ -7,14 +7,14 @@
 
 ## 📖 Spis treści
 
-- [O projekcie](#o-projekcie)
-- [Główne funkcjonalności](#główne-funkcjonalności)
-- [Technologie](#technologie)
-- [Struktura projektu](#struktura-projektu)
-- [Instalacja i uruchomienie](#instalacja-i-uruchomienie)
-- [Dokumentacja API](#dokumentacja-api)
-- [Perspektywy rozwoju](#perspektywy-rozwoju)
-- [Autor](#autor)
+- [O projekcie](#-o-projekcie)
+- [Główne funkcjonalności](#-główne-funkcjonalności)
+- [Technologie](#-technologie)
+- [Struktura projektu](#-struktura-projektu)
+- [Instalacja i uruchomienie](#-instalacja-i-uruchomienie)
+- [Dokumentacja API](#-dokumentacja-api)
+- [Perspektywy rozwoju](#-perspektywy-rozwoju)
+- [Autor](#-autor)
 
 ---
 
